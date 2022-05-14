@@ -1,4 +1,4 @@
-package com.hyesuhandh.dasoni;
+package com.hyesuhandh.dasoni.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,12 +7,16 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.hyesuhandh.dasoni.databinding.FragmentCoupleMainBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CoupleMainFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class CoupleMainFragment extends Fragment {
+    private FragmentCoupleMainBinding binding;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,6 +62,15 @@ public class CoupleMainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_couple_main, container, false);
+        binding = FragmentCoupleMainBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
 }

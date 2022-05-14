@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
 package="com.hyesuhandh.dasoni">
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <application
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
@@ -10,10 +11,10 @@ package="com.hyesuhandh.dasoni">
     android:theme="@style/Theme.Dasoni">
 
     <activity
-        android:name=".UserConnectionActivity"
+        android:name=".Activity.UserConnectionActivity"
         android:exported="true">
         <intent-filter>
-            // this block defines the starting activity.
+<!--            this block defines the starting activity.-->
 
             <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +22,7 @@ package="com.hyesuhandh.dasoni">
         </intent-filter>
     </activity>
 
-    <activity android:name=".MainActivity"></activity>
+    <activity android:name=".Activity.MainActivity"></activity>
 </application>
 
 </manifest>
