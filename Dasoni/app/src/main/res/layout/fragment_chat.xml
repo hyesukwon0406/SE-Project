@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fourth_dasoni"
-    tools:context=".ChatFragment">
+    tools:context=".Fragment.ChatFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
