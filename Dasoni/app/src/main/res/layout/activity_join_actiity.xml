@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="340dp"
         android:ems="10"
-        android:hint="E-mail"
+        android:hint="이메일"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/pwlay"
         app:layout_constraintHorizontal_bias="0.0"

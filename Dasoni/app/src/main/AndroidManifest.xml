@@ -20,7 +20,10 @@ package="com.hyesuhandh.dasoni">
 
     <activity
         android:name=".Activity.UserConnectionActivity"
-        android:exported="true"/>
+        android:exported="false"/>
+    <activity
+        android:name=".Activity.JoinActiity"
+        android:exported="false"/>
     <activity
         android:name=".Activity.IdpwFindActivity"
         android:exported="false" />

@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:ems="10"
-        android:hint="아이디"
+        android:hint="이메일"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="96dp"
         android:layout_marginBottom="184dp"
-        android:text="ID/PW찾기"
+        android:text="비밀번호 찾기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
