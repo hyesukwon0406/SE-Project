@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Couple Main"
+        android:icon="@drawable/ic_couplemain_24"
+        android:id="@+id/couplemainnav"/>
+
+    <item android:title="Chat"
+        android:icon="@drawable/ic_chat_24"
+        android:id="@+id/chatnav"/>
+
+    <item android:title="Gallery"
+        android:icon="@drawable/ic_gallery_24"
+        android:id="@+id/gallerynav"/>
+
+    <item android:title="Memo Board"
+        android:icon="@drawable/ic_memoboard_24"
+        android:id="@+id/memonav"/>
+</menu>

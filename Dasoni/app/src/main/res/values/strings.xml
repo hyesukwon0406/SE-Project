@@ -1,0 +1,19 @@
+<resources>
+    <!--    app name here     -->
+    <string name="app_name">Dasoni</string>
+
+    <!--  Activity file names here  -->
+    <string name="title_activity_couple_main">CoupleMainAct</string>
+
+    <!--  Component titles here  -->
+    <string name="title_navigation_couplemain">Home</string>
+    <string name="title_navigation_chat">Chat</string>
+    <string name="title_navigation_gallery">Gallery</string>
+    <string name="title_navigation_memoboard">Memo</string>
+
+    <!--  Component contents here  -->
+    <string name="content_finddasoniplaintxt">Your Dasoni\'s ID</string>
+    <string name="content_dasoniidtext">Partner ID</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

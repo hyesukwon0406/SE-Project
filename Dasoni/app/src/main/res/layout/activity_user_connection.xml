@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserConnectionActivity">
+
+  <TextView
+      android:id="@+id/finddasonitext"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Find my Dasoni"
+      android:textSize="34sp"
+      app:layout_constraintBottom_toTopOf="@+id/finddasoniplaintxt"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+  <EditText
+      android:id="@+id/finddasoniplaintxt"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:ellipsize="middle"
+      android:ems="10"
+      android:inputType="textPersonName"
+      android:minHeight="48dp"
+      android:text="@string/content_finddasoniplaintxt"
+      android:textAlignment="center"
+      app:layout_constraintBottom_toTopOf="@+id/findbutton"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toEndOf="@+id/dasoniidtext"
+      app:layout_constraintTop_toBottomOf="@+id/finddasonitext" />
+
+  <TextView
+      android:id="@+id/dasoniidtext"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Partner ID"
+      android:textSize="16sp"
+      app:layout_constraintBottom_toBottomOf="@+id/finddasoniplaintxt"
+      app:layout_constraintEnd_toStartOf="@+id/finddasoniplaintxt"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/finddasoniplaintxt" />
+
+  <ImageView
+      android:id="@+id/imageView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toTopOf="@+id/finddasonitext"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:srcCompat="@tools:sample/avatars" />
+
+  <Button
+      android:id="@+id/findbutton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Find!"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/finddasoniplaintxt" />
+
+  <androidx.constraintlayout.widget.Group
+      android:id="@+id/group"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:constraint_referenced_ids="dasoniidtext,finddasoniplaintxt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
