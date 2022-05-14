@@ -10,10 +10,10 @@ package="com.hyesuhandh.dasoni">
     android:theme="@style/Theme.Dasoni">
 
     <activity
-        android:name=".UserConnectionActivity"
+        android:name=".Activity.UserConnectionActivity"
         android:exported="true">
         <intent-filter>
-            // this block defines the starting activity.
+<!--            this block defines the starting activity.-->
 
             <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,7 @@ package="com.hyesuhandh.dasoni">
         </intent-filter>
     </activity>
 
-    <activity android:name=".MainActivity"></activity>
+    <activity android:name=".Activity.MainActivity"></activity>
 </application>
 
 </manifest>
