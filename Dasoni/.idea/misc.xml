@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Dasoni/app/src/main/res/layout/activity_idpw_find.xml" value="0.246875" />
+        <entry key="..\:/Dasoni/app/src/main/res/layout/activity_join_actiity.xml" value="0.246875" />
+        <entry key="..\:/Dasoni/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/Dasoni/app/src/main/res/layout/activity_main.xml" value="0.246875" />
+        <entry key="..\:/Dasoni/app/src/main/res/layout/activity_user_connection.xml" value="0.246875" />
         <entry key="app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.3485" />
         <entry key="app/src/main/res/drawable-anydpi/ic_chat.xml" value="0.3485" />
         <entry key="app/src/main/res/drawable-anydpi/ic_gallery.xml" value="0.3485" />

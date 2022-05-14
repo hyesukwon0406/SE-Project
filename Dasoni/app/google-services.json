@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:936867677044:android:db9016aa7a62291dc92221",
+        "mobilesdk_app_id": "1:936867677044:android:38d5cbfff1ee3834c92221",
         "android_client_info": {
-          "package_name": "com.me.dasoni1"
+          "package_name": "com.hyesuhandh.dasoni"
         }
       },
       "oauth_client": [
