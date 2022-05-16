@@ -9,10 +9,13 @@ import com.hyesuhandh.dasoni.databinding.ActivityJoinActiityBinding;
 public class JoinActiity extends AppCompatActivity {
     private ActivityJoinActiityBinding binding;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityJoinActiityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
+
 }

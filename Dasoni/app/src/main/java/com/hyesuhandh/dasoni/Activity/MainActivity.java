@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        replaceFragment(new CoupleMainFragment()); //this starts the app with coupleMain fragment.
+
+        replaceFragment(new CoupleMainFragment());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch(item.getItemId()){
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new MemoBoardFragment());
                     break;
             }
-
+            
             return true;
         });
     }

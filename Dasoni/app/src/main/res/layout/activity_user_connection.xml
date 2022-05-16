@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,40 +11,49 @@
       android:id="@+id/finddasonitext"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Find my Dasoni"
+      android:text="당신의 다소니를\n    알려주세요"
+      android:textColor="#000000"
       android:textSize="34sp"
-      app:layout_constraintBottom_toTopOf="@+id/finddasoniplaintxt"
+      app:layout_constraintBottom_toTopOf="@+id/finddasoniinputtextlayout"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-  <EditText
-      android:id="@+id/finddasoniplaintxt"
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/finddasoniinputtextlayout"
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:ellipsize="middle"
+      android:layout_marginBottom="40dp"
       android:ems="10"
-      android:inputType="textPersonName"
+      android:hint="@string/content_finddasoniplaintxt"
       android:minHeight="48dp"
-      android:text="@string/content_finddasoniplaintxt"
       android:textAlignment="center"
       app:layout_constraintBottom_toTopOf="@+id/findbutton"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.5"
       app:layout_constraintStart_toEndOf="@+id/dasoniidtext"
-      app:layout_constraintTop_toBottomOf="@+id/finddasonitext" />
+      app:layout_constraintTop_toBottomOf="@+id/finddasonitext">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/finddasoniinputtxt"
+        android:layout_width="214dp"
+        android:layout_height="wrap_content" />
+  </com.google.android.material.textfield.TextInputLayout>
 
   <TextView
       android:id="@+id/dasoniidtext"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Partner ID"
+      android:text="@string/content_dasoniidtext"
+      android:textColor="#000000"
       android:textSize="16sp"
-      app:layout_constraintBottom_toBottomOf="@+id/finddasoniplaintxt"
-      app:layout_constraintEnd_toStartOf="@+id/finddasoniplaintxt"
+      app:layout_constraintBottom_toBottomOf="@+id/finddasoniinputtextlayout"
+      app:layout_constraintEnd_toStartOf="@+id/finddasoniinputtextlayout"
       app:layout_constraintHorizontal_bias="0.5"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/finddasoniplaintxt" />
+      app:layout_constraintTop_toTopOf="@+id/finddasoniinputtextlayout" />
 
   <ImageView
       android:id="@+id/imageView"
@@ -59,16 +69,16 @@
       android:id="@+id/findbutton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Find!"
+      android:text="@string/content_findbutton"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/finddasoniplaintxt" />
+      app:layout_constraintTop_toBottomOf="@+id/finddasoniinputtextlayout" />
 
   <androidx.constraintlayout.widget.Group
       android:id="@+id/group"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:constraint_referenced_ids="dasoniidtext,finddasoniplaintxt" />
+      app:constraint_referenced_ids="dasoniidtext,finddasoniinputtextlayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

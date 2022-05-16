@@ -1,5 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 package="com.hyesuhandh.dasoni">
+
+<!--    These two lines are for connecting to firebase DB.-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 <application
     android:allowBackup="true"
@@ -10,18 +15,30 @@ package="com.hyesuhandh.dasoni">
     android:theme="@style/Theme.Dasoni">
 
     <activity
-        android:name=".Activity.UserConnectionActivity"
+        android:name=".Activity.LoginActivity"
         android:exported="true">
         <intent-filter>
-<!--            this block defines the starting activity.-->
-
+<!--            these two lines defines the starting activity.-->
             <action android:name="android.intent.action.MAIN" />
-
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
 
-    <activity android:name=".Activity.MainActivity"></activity>
-</application>
+    <activity
+        android:name=".Activity.MainActivity">
+    </activity>
 
+    <activity
+        android:name=".Activity.FindPwActivity">
+    </activity>
+
+    <activity
+        android:name=".Activity.JoinActiity">
+    </activity>
+
+    <activity
+        android:name=".Activity.UserConnectionActivity">
+    </activity>
+
+</application>
 </manifest>

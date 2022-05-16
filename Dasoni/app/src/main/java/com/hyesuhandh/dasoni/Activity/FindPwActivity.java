@@ -4,15 +4,15 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.hyesuhandh.dasoni.databinding.ActivityIdpwFindBinding;
+import com.hyesuhandh.dasoni.databinding.ActivityFindPwBinding;
 
-public class IdpwFindActivity extends AppCompatActivity {
-    private ActivityIdpwFindBinding binding;
+public class FindPwActivity extends AppCompatActivity {
+    private ActivityFindPwBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityIdpwFindBinding.inflate(getLayoutInflater());
+        binding = ActivityFindPwBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 }

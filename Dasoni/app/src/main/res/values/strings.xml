@@ -12,8 +12,10 @@
     <string name="title_navigation_memoboard">Memo</string>
 
     <!--  Component contents here  -->
-    <string name="content_finddasoniplaintxt">Your Dasoni\'s ID</string>
-    <string name="content_dasoniidtext">Partner ID</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="content_finddasoniplaintxt">다소니 아이디를 입력</string>
+    <string name="content_dasoniidtext">다소니 아이디</string>
+    <string name="content_findbutton">찾기!</string>
+    <string name="content_user1nickname">혜뚜가많이미안해..</string>
+    <string name="content_user2nickname">지현배지현지현</string>
+
 </resources>
