@@ -8,17 +8,14 @@ public class UserAccount {
     private  String nickname;// 닉네임
     private  String email;//이메일
     private int emoji;// 표정?
+
+
     public UserAccount(){ }
 
 
-    public int getEmoji() {
-        return emoji;
-    }
+    public int getEmoji() { return emoji; }
 
-    public void setEmoji(int emoji) {
-        this.emoji = emoji;
-    }
-
+    public void setEmoji(int emoji) { this.emoji = emoji; }
 
     public String getEmail() {
         return email;
