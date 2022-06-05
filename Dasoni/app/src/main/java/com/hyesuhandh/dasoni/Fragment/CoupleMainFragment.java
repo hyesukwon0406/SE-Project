@@ -58,8 +58,6 @@ public class CoupleMainFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
@@ -68,6 +66,44 @@ public class CoupleMainFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentCoupleMainBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        binding.user1feeling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.facechange.setVisibility(view.VISIBLE);
+            }
+        });
+        binding.face1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                a=1;
+                changImage();
+                binding.facechange.setVisibility(view.INVISIBLE);
+            }
+        });
+        binding.face2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                a=2;
+                changImage();
+                binding.facechange.setVisibility(view.INVISIBLE);
+            }
+        });
+        binding.face3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                a=3;
+                changImage();
+                binding.facechange.setVisibility(view.INVISIBLE);
+            }
+        });
+        binding.face4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                a=4;
+                changImage();
+                binding.facechange.setVisibility(view.INVISIBLE);
+            }
+        });
         return view;
     }
 
