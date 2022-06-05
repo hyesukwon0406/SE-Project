@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        replaceFragment(new CoupleMainFragment());
 //        replaceFragment(new CoupleMainFragment()); //this starts the app with coupleMain fragment.
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {

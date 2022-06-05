@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.hyesuhandh.dasoni.R;
 import com.hyesuhandh.dasoni.databinding.FragmentCoupleMainBinding;
 
 /**
@@ -26,6 +27,7 @@ public class CoupleMainFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    int a = 1;
 
     public CoupleMainFragment() {
         // Required empty public constructor
@@ -56,6 +58,8 @@ public class CoupleMainFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -71,6 +75,23 @@ public class CoupleMainFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+    public void changImage(){
+        switch (a){
+            case 1:
+                binding.user1feeling.setImageResource(R.drawable.face);
+                break;
+            case 2:
+                binding.user1feeling.setImageResource(R.drawable.loveface);
+                break;
+            case 3:
+                binding.user1feeling.setImageResource(R.drawable.sadface);
+                break;
+            case 4:
+                binding.user1feeling.setImageResource(R.drawable.angryface);
+                break;
+        }
+
     }
 
 }
