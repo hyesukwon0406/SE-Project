@@ -6,6 +6,7 @@ import com.hyesuhandh.dasoni.UserAccount;
 public class ChatData implements Serializable{
     private String msg;
     private String nickname;
+    private String DateTime;
 
     public ChatData(){ // default constructor
         }
@@ -24,5 +25,13 @@ public class ChatData implements Serializable{
 
     public void setNickname(String nickname){
         this.nickname = nickname;
+    }
+
+    public String getDateTime() {
+        return DateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        DateTime = dateTime;
     }
 }
