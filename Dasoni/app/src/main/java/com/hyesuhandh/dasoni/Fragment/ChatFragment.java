@@ -6,8 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.hyesuhandh.dasoni.databinding.FragmentChatBinding;
+import com.hyesuhandh.dasoni.UserAccount;
+import com.hyesuhandh.dasoni.ChatData;
+
+import javax.xml.xpath.XPath;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +28,9 @@ import com.hyesuhandh.dasoni.databinding.FragmentChatBinding;
  */
 public class ChatFragment extends Fragment {
     private FragmentChatBinding binding;
+    private FirebaseAuth auth;
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance(); //DB 선언 및 할당[생성]
+    private DatabaseReference databaseReference = firebaseDatabase.getReference("message"); // 해당 DB 아래에 message가 없으니 만듦
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +44,8 @@ public class ChatFragment extends Fragment {
     public ChatFragment() {
         // Required empty public constructor
     }
+
+    //databaseReference.setValue("Hello!");
 
     /**
      * Use this factory method to create a new instance of

@@ -7,7 +7,6 @@
 
     <!--  Component titles here  -->
     <string name="title_navigation_couplemain">Home</string>
-    <string name="title_navigation_chat">Chat</string>
     <string name="title_navigation_gallery">Gallery</string>
     <string name="title_navigation_memoboard">Memo</string>
 
@@ -15,7 +14,8 @@
     <string name="content_finddasoniplaintxt">다소니 아이디를 입력</string>
     <string name="content_dasoniidtext">다소니 아이디</string>
     <string name="content_findbutton">찾기!</string>
-    <string name="content_user1nickname">혜뚜가많이미안해..</string>
-    <string name="content_user2nickname">지현배지현지현</string>
+    <string name="content_user1nickname">다소니1</string>
+    <string name="content_user2nickname">다소니2</string>
+    <string name="content_waitingresponse">상대방의 요청 수락을 기다리는 중 입니다!</string>
 
 </resources>
