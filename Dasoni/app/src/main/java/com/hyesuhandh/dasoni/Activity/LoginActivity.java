@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hyesuhandh.dasoni.databinding.ActivityLoginBinding;
@@ -75,7 +76,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {//성공했을때
+                            FirebaseUser firebaseUser = auth.getCurrentUser();
                             Intent intent = new Intent(LoginActivity.this, UserConnectionActivity.class);
+                            intent.putExtra("UserUid",firebaseUser.getUid());
                             startActivity(intent);
                         } else {//실패했을때
                             Toast.makeText(LoginActivity.this, "로그인 오류", Toast.LENGTH_SHORT).show();

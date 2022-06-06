@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,12 +18,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.hyesuhandh.dasoni.Model.UserAccount;
 import com.hyesuhandh.dasoni.databinding.ActivityJoinActiityBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.UUID;
 
 
 public class JoinActiity extends AppCompatActivity {
@@ -114,8 +112,6 @@ public class JoinActiity extends AppCompatActivity {
 
         //setValue :database에 insert (삽입) 행위
         databaseReference.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
-
-
     }
     /* databaseReference.addListenerForSingleValueEvent(checkRegister);*/
 

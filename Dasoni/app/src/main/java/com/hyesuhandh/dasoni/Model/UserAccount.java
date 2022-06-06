@@ -1,4 +1,4 @@
-package com.hyesuhandh.dasoni.Activity;
+package com.hyesuhandh.dasoni.Model;
 
 
 
@@ -40,6 +40,5 @@ public class UserAccount {
     public void setDateTime(String dateTime) {
         DateTime = dateTime;
     }
-
 
 }
