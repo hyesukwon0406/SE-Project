@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.hyesuhandh.dasoni.R;
 import com.hyesuhandh.dasoni.databinding.FragmentCoupleMainBinding;
 
 /**
@@ -26,6 +27,7 @@ public class CoupleMainFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    int a = 1;
 
     public CoupleMainFragment() {
         // Required empty public constructor
@@ -64,6 +66,44 @@ public class CoupleMainFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentCoupleMainBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        binding.user1feeling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.facechange.setVisibility(view.VISIBLE);
+            }
+        });
+        binding.face1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                a=1;
+                changImage();
+                binding.facechange.setVisibility(view.INVISIBLE);
+            }
+        });
+        binding.face2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                a=2;
+                changImage();
+                binding.facechange.setVisibility(view.INVISIBLE);
+            }
+        });
+        binding.face3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                a=3;
+                changImage();
+                binding.facechange.setVisibility(view.INVISIBLE);
+            }
+        });
+        binding.face4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                a=4;
+                changImage();
+                binding.facechange.setVisibility(view.INVISIBLE);
+            }
+        });
         return view;
     }
 
@@ -72,5 +112,23 @@ public class CoupleMainFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+    public void changImage(){
+        switch (a){
+            case 1:
+                binding.user1feeling.setImageResource(R.drawable.face);
+                break;
+            case 2:
+                binding.user1feeling.setImageResource(R.drawable.loveface);
+                break;
+            case 3:
+                binding.user1feeling.setImageResource(R.drawable.sadface);
+                break;
+            case 4:
+                binding.user1feeling.setImageResource(R.drawable.angryface);
+                break;
+        }
+
+    }
 
 }
+

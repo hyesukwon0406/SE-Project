@@ -17,5 +17,7 @@
     <string name="content_user1nickname">다소니1</string>
     <string name="content_user2nickname">다소니2</string>
     <string name="content_waitingresponse">상대방의 요청 수락을 기다리는 중 입니다!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

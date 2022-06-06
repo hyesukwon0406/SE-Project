@@ -14,7 +14,8 @@ import com.hyesuhandh.dasoni.Fragment.MemoBoardFragment;
 import com.hyesuhandh.dasoni.R;
 import com.hyesuhandh.dasoni.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity { ;
+    String UserUid;
 
     private ActivityMainBinding binding;
 
@@ -23,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         replaceFragment(new CoupleMainFragment());
+
+//        replaceFragment(new CoupleMainFragment()); //this starts the app with coupleMain fragment.
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch(item.getItemId()){
@@ -42,16 +44,17 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new MemoBoardFragment());
                     break;
             }
-            
+
             return true;
         });
     }
+
+
 
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
-
     }
 }

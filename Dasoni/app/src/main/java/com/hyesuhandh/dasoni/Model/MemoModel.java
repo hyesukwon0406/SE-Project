@@ -1,13 +1,13 @@
-package com.hyesuhandh.dasoni;
+package com.hyesuhandh.dasoni.Model;
 
 //메모 정보 모델 클래스
-public class MemoData {
+public class MemoModel {
     private int memoNumber;
     private int coupleNumber;
     private String dateTime;
     private String memoContent;
 
-    public MemoData(){ }
+    public MemoModel(){ }
 
     public int getMemoNumber() {
         return memoNumber;

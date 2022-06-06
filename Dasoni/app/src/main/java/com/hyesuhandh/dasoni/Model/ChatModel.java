@@ -1,15 +1,15 @@
-package com.hyesuhandh.dasoni;
+package com.hyesuhandh.dasoni.Model;
 
 import java.io.Serializable; // importing this for chat instance structure
-import com.hyesuhandh.dasoni.UserAccount;
+
 
 //채팅 정보 모델 클래스
-public class ChatData implements Serializable{
+public class ChatModel implements Serializable{
     private String msg;
     private String nickname;
     private String DateTime;
 
-    public ChatData(){ // default constructor
+    public ChatModel(){ // default constructor
         }
 
     public String getMsg(){

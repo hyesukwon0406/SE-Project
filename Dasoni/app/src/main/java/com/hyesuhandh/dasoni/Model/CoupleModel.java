@@ -1,14 +1,14 @@
-package com.hyesuhandh.dasoni;
+package com.hyesuhandh.dasoni.Model;
 
 //커플 정보 모델 클래스
-public class CoupleData {
+public class CoupleModel {
     private int coupleNumber;
     private String userEmail1;
     private String userEmail2;
     private String startDate;
-    private int coupleState = 0; //0 = 연결 안 됨, 1 = 수락, 2 = 거절
+    private int requestState = 0; //0 = 연결 안 됨, 1 = 수락, 2 = 거절
 
-    public CoupleData(){ } //Default Constructor
+    public CoupleModel(){ } //Default Constructor
 
     public int getCoupleNumber() {
         return coupleNumber;
@@ -42,11 +42,11 @@ public class CoupleData {
         this.startDate = strtDate;
     }
 
-    public int getCoupleState() {
-        return coupleState;
+    public int getRequestState() {
+        return requestState;
     }
 
-    public void setCoupleState(int coupStat) {
-        coupleState = coupStat;
+    public void setRequestState(int rqstStat) {
+        requestState = rqstStat;
     }
 }

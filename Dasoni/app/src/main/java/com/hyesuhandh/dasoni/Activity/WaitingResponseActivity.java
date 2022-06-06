@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hyesuhandh.dasoni.databinding.ActivityWaitingResponseBinding;
-import com.hyesuhandh.dasoni.UserAccount;
 
 public class WaitingResponseActivity extends AppCompatActivity {
     private ActivityWaitingResponseBinding binding;

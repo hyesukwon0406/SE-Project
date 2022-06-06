@@ -1,4 +1,4 @@
-package com.hyesuhandh.dasoni;
+package com.hyesuhandh.dasoni.Model;
 
 import java.util.HashMap;
 import java.util.Map;

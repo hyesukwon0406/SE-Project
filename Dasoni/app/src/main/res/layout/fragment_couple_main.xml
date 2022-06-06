@@ -4,54 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightest_dasoni"
+    android:background="@color/white"
     tools:context=".Fragment.CoupleMainFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <ImageView
         android:id="@+id/user2feeling"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/user1nickname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        android:src="@drawable/face" />
 
     <ImageView
         android:id="@+id/user1feeling"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toTopOf="@+id/user2nickname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="409dp"
-        android:layout_height="457dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+        android:src="@drawable/face" />
 
     <TextView
         android:id="@+id/dDayText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:text="D + 100"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toStartOf="@+id/user2feeling"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toEndOf="@+id/user1feeling"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,8 +47,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="다소니1"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="@+id/user1feeling"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user1feeling" />
@@ -73,10 +57,61 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="다소니2"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/user2feeling"
         app:layout_constraintTop_toBottomOf="@+id/user2feeling" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="0dp"
+        android:layout_height="368dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <LinearLayout
+        android:id="@+id/facechange"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/second_dasoni"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/face1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/face" />
+
+        <ImageView
+            android:id="@+id/face2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/loveface" />
+
+        <ImageView
+            android:id="@+id/face3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/sadface" />
+
+        <ImageView
+            android:id="@+id/face4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/angryface" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

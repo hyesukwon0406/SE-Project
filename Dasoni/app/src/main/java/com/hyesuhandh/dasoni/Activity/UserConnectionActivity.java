@@ -1,90 +1,103 @@
 package com.hyesuhandh.dasoni.Activity;
 
-import static java.lang.Thread.sleep;
-
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.hyesuhandh.dasoni.UserAccount;
+import com.hyesuhandh.dasoni.Fragment.ChatFragment;
+import com.hyesuhandh.dasoni.Fragment.CoupleMainFragment;
+import com.hyesuhandh.dasoni.Fragment.GalleryFragment;
+import com.hyesuhandh.dasoni.Fragment.MemoBoardFragment;
+import com.hyesuhandh.dasoni.Model.CoupleModel;
+import com.hyesuhandh.dasoni.Model.UserAccount;
+import com.hyesuhandh.dasoni.R;
 import com.hyesuhandh.dasoni.databinding.ActivityUserConnectionBinding;
 
 public class UserConnectionActivity extends AppCompatActivity {
     private static final String TAG = "UserConnectionActivity";
-
+    private String UserUid;
+    private String Useremail;
+    private String dasonip;
     private ActivityUserConnectionBinding binding;
     private FirebaseAuth auth;
     private FirebaseDatabase firebaseDB = FirebaseDatabase.getInstance(); //DB 선언 및 할당[생성]
     private DatabaseReference dasoniRef = firebaseDB.getReference("Dasoni"); // 실시간 DB
     private DatabaseReference usrAcctRef = firebaseDB.getReference("Dasoni/UserAccount"); // 실시간 DB
-    private String currentUID;
-    private String userEmailAsId;
-
-//    ValueEventListener usrAcctListener = new ValueEventListener() {
-//        @Override
-//        public void onDataChange(DataSnapshot dataSnapshot) { //DB에 존재하는 모든 UID와 value를 형태 그대로 가져 옴
-//
-//        }
-//        @Override
-//        public void onCancelled(DatabaseError databaseError) {
-//            // Getting Post failed, log a message
-//            Log.w(TAG, "다소니 찾기 오류", databaseError.toException());
-//        }
-//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        UserUid = getIntent().getStringExtra("UserUid");
+        Useremail = getIntent().getStringExtra("Useremail");
         binding = ActivityUserConnectionBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
-        auth = FirebaseAuth.getInstance();
-
-//        this.usrAcctRef.addValueEventListener(usrAcctListener);
-        FirebaseUser currentUser = auth.getCurrentUser(); //현재 사용자 정보 가져옴
-        currentUID = usrAcctRef.child(currentUser.getUid()).toString(); //현재 UID를 가져와 문자열로 저장
-
-        binding.findbutton.setOnClickListener(new View.OnClickListener() { //찾기 버튼 클릭 시
+        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_user_connection);
+        ChatFragment cfm = new ChatFragment();
+        CoupleMainFragment cpfm = new CoupleMainFragment();
+        GalleryFragment gfm = new GalleryFragment();
+        MemoBoardFragment mfm = new MemoBoardFragment();
+        binding.findbutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { //입력된 아이디의 유저에게 커플 요청 보내기
-                if(binding.finddasoniinputtxt.length() > 0 ){ //아이디가 입력된 경우
-                    userEmailAsId = binding.finddasoniinputtxt.getText().toString().trim(); //입력된 아이디를 가져옴
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("UserUid",UserUid);
+                cfm.setArguments(bundle);
+                cpfm.setArguments(bundle);
+                gfm.setArguments(bundle);
+                mfm.setArguments(bundle);
 
-                    //1.가져온 아이디가 DB에 있는지 확인해서
-                    String tmp = usrAcctRef.getKey();
-                    System.out.println(tmp);
-                    //2.(if)있으면 해당 유저와 상태 0[연결 안 됨]인 CoupleData 생성  커플 요청
+                String dasonipartner = (binding.finddasoniinputtxt).getText().toString().trim();//이메일
+                Query queries=usrAcctRef.orderByChild("email").equalTo(dasonipartner);
+                if(dasonipartner.length()>0){
+                    queries.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                                UserAccount userAccount = snapshot1.getValue(UserAccount.class);
+                                dasonip = userAccount.getEmail();
+                            }
+                            if(dasonip.length()>0){
+                                CoupleModel cm = new CoupleModel();
+                                cm.setUserEmail1(Useremail);
+                                cm.setUserEmail2(dasonip);
+                                cm.setRequestState(0);
+                                dasoniRef.child("CoupleData").push().setValue(cm);
+                            }else{
+                                Toast.makeText(UserConnectionActivity.this,"없는 이메일을 입니다", Toast.LENGTH_LONG).show();
+                            }
+                        }
 
-                    //2-1.waiting_response로 화면 전환하기
-                    openWaitingResponseActivity(); //커플 수락 대기 화면 전환
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    //2-2.(else)없으면 없는 아이디를 입력했다고 하고, 다시 입력받게 함
+                        }
+                    });
 
-                }
-                else { //아이디가 입력되지 않은 경우
-                    Toast.makeText(getApplicationContext(), "아이디를 입력하셔야 합니다.", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(UserConnectionActivity.this,"상대방 이메일을 입력해주세요", Toast.LENGTH_LONG).show();
                 }
             }
         });
-    }
 
-    public void openWaitingResponseActivity(){
-        //change to waiting response activity.
-        Intent intent = new Intent(this, WaitingResponseActivity.class);
+    }
+    public void openMainActivity(){
+        //this handles when the button is clicked.
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
