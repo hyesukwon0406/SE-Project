@@ -43,14 +43,7 @@ public class JoinActiity extends AppCompatActivity {
         isemailck = false;
         binding.joinokbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if(isemailck==true){
-                    signUp();
-                }else{
-                    Toast.makeText(JoinActiity.this,"이메일 중복확인을 해주세요.", Toast.LENGTH_SHORT).show();
-                }
-            }
-
+            public void onClick(View view) { signUp(); }
         });
         binding.emailjoinbtn.setOnClickListener(new View.OnClickListener() {
             @Override

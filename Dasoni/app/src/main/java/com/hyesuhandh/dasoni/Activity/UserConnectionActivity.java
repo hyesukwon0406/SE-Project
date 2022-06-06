@@ -34,6 +34,7 @@ import com.hyesuhandh.dasoni.databinding.ActivityUserConnectionBinding;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,6 +71,7 @@ public class UserConnectionActivity extends AppCompatActivity {
         mfm.setArguments(bundle);
         dasonist();
         dasonirequest();
+        //확인 버튼
         findDasoniButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,6 +112,7 @@ public class UserConnectionActivity extends AppCompatActivity {
                 }
             }
         });
+        //수락버튼
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,6 +137,7 @@ public class UserConnectionActivity extends AppCompatActivity {
                 openMainActivity();
             }
         });
+        //거절 버튼
         binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -178,11 +182,9 @@ public class UserConnectionActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) { }
         });
-
-
     }
     public void dasonist(){
-        Query queries=dasoniRef.child("CoupleData").orderByChild("getUserEmail2").equalTo(Useremail);
+        Query queries=dasoniRef.child("CoupleData").orderByChild("UserEmail1").equalTo(Useremail);
         queries.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
