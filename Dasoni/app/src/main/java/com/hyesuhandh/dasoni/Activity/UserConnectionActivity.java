@@ -131,6 +131,7 @@ public class UserConnectionActivity extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) { }
                 });
+                openMainActivity();
             }
         });
         binding.button2.setOnClickListener(new View.OnClickListener() {
@@ -156,9 +157,11 @@ public class UserConnectionActivity extends AppCompatActivity {
                 });
 
             }
+
         });
 
     }
+
     public void dasonirequest(){
         Query queries=dasoniRef.child("CoupleData").orderByChild("getUserEmail2").equalTo(Useremail);
         queries.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -225,5 +228,4 @@ public class UserConnectionActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
 }
