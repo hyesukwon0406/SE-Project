@@ -68,6 +68,8 @@ public class UserConnectionActivity extends AppCompatActivity {
         cpfm.setArguments(bundle);
         gfm.setArguments(bundle);
         mfm.setArguments(bundle);
+        dasonist();
+        dasonirequest();
         findDasoniButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
