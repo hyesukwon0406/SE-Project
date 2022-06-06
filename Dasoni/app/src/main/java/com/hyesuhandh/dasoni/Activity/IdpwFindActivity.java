@@ -28,33 +28,36 @@ public class IdpwFindActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         auth = FirebaseAuth.getInstance();
+
         binding.button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(binding.emailfindlayfild.length()>0){
-//                    pwreset();
-//                }else{
-//                    Toast.makeText(IdpwFindActivity.this, "이메일을 입력해 주세요", Toast.LENGTH_SHORT).show();
-//                }
+                if(binding.editTextTextEmailAddress.length() > 0){
+                    pwReset();
+                }
+                else{
+                    Toast.makeText(IdpwFindActivity.this, "이메일을 입력해 주세요", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     //비밀번호 재설정
-    public void pwreset(){
-//        String email = binding.emailfindlayfild.getText().toString().trim();
-//        auth.sendPasswordResetEmail(email)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if(task.isSuccessful()){
-//                            Toast.makeText(IdpwFindActivity.this, "이메일을 보냈습니다.", Toast.LENGTH_LONG).show();
-//                            finish();
-//                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-//                        }else{
-//                            Toast.makeText(IdpwFindActivity.this, "메일 보내기 실패!", Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                });
+    public void pwReset(){
+        String email = binding.editTextTextEmailAddress.getText().toString().trim();
+        auth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(IdpwFindActivity.this, "이메일을 보냈습니다.", Toast.LENGTH_LONG).show();
+                            finish();
+                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                        }
+                        else{
+                            Toast.makeText(IdpwFindActivity.this, "메일 보내기 실패!\n다시 시도해 주세요.", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 }

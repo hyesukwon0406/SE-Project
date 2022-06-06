@@ -34,8 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         binding.okbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(binding.Idfild.length()>0){
-                    if(binding.Pwfild.length()>0){
+                if(binding.Idfild.length() > 0){
+                    if(binding.Pwfild.length() > 0){
                         logIn();
                     }
                     else{
@@ -73,14 +73,15 @@ public class LoginActivity extends AppCompatActivity {
     public void logIn(){
         String email = binding.Idfild.getText().toString().trim();
         String pwd = binding.Pwfild.getText().toString().trim();
-        auth.signInWithEmailAndPassword(email, pwd)
-                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+
+        auth.signInWithEmailAndPassword(email,
+                pwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {//성공했을때
+                        if (task.isSuccessful()) { //성공 시
                             Intent intent = new Intent(LoginActivity.this, UserConnectionActivity.class);
                             startActivity(intent);
-                        } else {//실패했을때
+                        } else {// 실패 시
                             Toast.makeText(LoginActivity.this, "로그인 오류", Toast.LENGTH_SHORT).show();
                         }
                     }

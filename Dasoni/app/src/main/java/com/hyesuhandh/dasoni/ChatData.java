@@ -3,6 +3,7 @@ package com.hyesuhandh.dasoni;
 import java.io.Serializable; // importing this for chat instance structure
 import com.hyesuhandh.dasoni.UserAccount;
 
+//채팅 정보 모델 클래스
 public class ChatData implements Serializable{
     private String msg;
     private String nickname;
