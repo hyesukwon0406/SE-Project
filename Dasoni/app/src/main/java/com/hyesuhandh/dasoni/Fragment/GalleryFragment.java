@@ -58,7 +58,6 @@ public class GalleryFragment extends Fragment {
     private final int GALLERY_CODE =10;
     private FirebaseStorage storage;
 
-
     private Uri filePath;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -69,6 +68,7 @@ public class GalleryFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String UserUid;
 
     public GalleryFragment() {
         // Required empty public constructor
@@ -98,6 +98,7 @@ public class GalleryFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            UserUid = this.getArguments().getString("UserUid");
         }
     }
 
@@ -180,10 +181,9 @@ public class GalleryFragment extends Fragment {
             String filename = formatter.format(now) + ".png";
             //storage 주소와 폴더 파일명을 지정해 준다.
             Img_rc_Model imglod = new Img_rc_Model();
-            String UserUid = this.getArguments().getString("UserUid");
             imglod.setDate(formatter.format(now));
             imglod.setUser(UserUid);
-            imglod.setImage(filePath);
+            imglod.setImage( filename );
             databaseReference.child("CoupleData").push().setValue(imglod);
 
             StorageReference storageRef = storage.getReferenceFromUrl("gs://dasoni-564d8.appspot.com/").child("images/" + filename);
@@ -209,7 +209,7 @@ public class GalleryFragment extends Fragment {
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            @SuppressWarnings("VisibleForTests")
+                            @SuppressWarnings("VisibleForTests") //이걸 넣어 줘야 아랫줄에 에러가 사라진다. 넌 누구냐?
                             double progress = (100 * taskSnapshot.getBytesTransferred()) /  taskSnapshot.getTotalByteCount();
                             //dialog에 진행률을 퍼센트로 출력해 준다
                             progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");

@@ -52,14 +52,9 @@ public class MainActivity extends AppCompatActivity { ;
 
 
     private void replaceFragment(Fragment fragment){
-        Bundle bundle = new Bundle();
-        bundle.putString("UserUid", UserUid);
-        fragment.setArguments(bundle);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
-
-
     }
 }

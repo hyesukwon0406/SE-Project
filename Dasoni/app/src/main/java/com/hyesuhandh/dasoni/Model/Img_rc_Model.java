@@ -4,8 +4,9 @@ import android.net.Uri;
 
 public class Img_rc_Model {
     private String user;
+    private String cupleid;
     private String date;
-    private Uri image;
+    private String image;
 
     public Img_rc_Model(){}
 
@@ -27,11 +28,19 @@ public class Img_rc_Model {
         this.date = date;
     }
 
-    public Uri getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Uri image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getCupleid() {
+        return cupleid;
+    }
+
+    public void setCupleid(String cupleid) {
+        this.cupleid = cupleid;
     }
 }
