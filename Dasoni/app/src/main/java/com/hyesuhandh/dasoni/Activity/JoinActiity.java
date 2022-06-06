@@ -17,6 +17,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.hyesuhandh.dasoni.Model.UserAccount;
 import com.hyesuhandh.dasoni.databinding.ActivityJoinActiityBinding;
@@ -42,7 +43,13 @@ public class JoinActiity extends AppCompatActivity {
         isemailck = false;
         binding.joinokbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { signUp();}
+            public void onClick(View view) {
+                if(isemailck==true){
+                    signUp();
+                }else{
+                    Toast.makeText(JoinActiity.this,"이메일 중복확인을 해주세요.", Toast.LENGTH_SHORT).show();
+                }
+            }
 
         });
         binding.emailjoinbtn.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +97,6 @@ public class JoinActiity extends AppCompatActivity {
 
     }
     //유저db저장
-
     public void dbuser(){
         FirebaseUser firebaseUser = auth.getCurrentUser();
 
@@ -118,17 +124,28 @@ public class JoinActiity extends AppCompatActivity {
 
     //중복확인
     public void emailck(){
+        String email = (binding.emailfild).getText().toString().trim();//이메일
 
         if(binding.emailfild.length()>0){
-            databaseReference.child("UserAccount").child("email").addListenerForSingleValueEvent(new ValueEventListener() {
+            Query query= databaseReference.child("UserAccount").orderByChild("email").equalTo(email);
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                    for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                        UserAccount userAccount = snapshot1.getValue(UserAccount.class);
+                        String yuemail = userAccount.getEmail();
+                        if(email.equals(yuemail)){
+                            Toast.makeText(JoinActiity.this,"이미 있는 이메일 입니다.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }else {
+                            Toast.makeText(JoinActiity.this,"사용가능한 이메일 입니다.", Toast.LENGTH_SHORT).show();
+                            isemailck = true;
+                        }
+                    }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    Toast.makeText(JoinActiity.this,"데이터베이스  검색 에러.", Toast.LENGTH_SHORT).show();
                 }
             });
         }else{
