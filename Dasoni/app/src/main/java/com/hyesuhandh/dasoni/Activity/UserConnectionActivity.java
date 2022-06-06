@@ -43,6 +43,7 @@ public class UserConnectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         UserUid = getIntent().getStringExtra("UserUid");
+        Useremail = getIntent().getStringExtra("Useremail");
         binding = ActivityUserConnectionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setContentView(R.layout.activity_user_connection);
@@ -50,50 +51,48 @@ public class UserConnectionActivity extends AppCompatActivity {
         CoupleMainFragment cpfm = new CoupleMainFragment();
         GalleryFragment gfm = new GalleryFragment();
         MemoBoardFragment mfm = new MemoBoardFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("UserUid",UserUid);
-        cfm.setArguments(bundle);
-        cpfm.setArguments(bundle);
-        gfm.setArguments(bundle);
-        mfm.setArguments(bundle);
-
         binding.findbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                connect();
+                Bundle bundle = new Bundle();
+                bundle.putString("UserUid",UserUid);
+                cfm.setArguments(bundle);
+                cpfm.setArguments(bundle);
+                gfm.setArguments(bundle);
+                mfm.setArguments(bundle);
+
+                String dasonipartner = (binding.finddasoniinputtxt).getText().toString().trim();//이메일
+                Query queries=usrAcctRef.orderByChild("email").equalTo(dasonipartner);
+                if(dasonipartner.length()>0){
+                    queries.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                                UserAccount userAccount = snapshot1.getValue(UserAccount.class);
+                                dasonip = userAccount.getEmail();
+                            }
+                            if(dasonip.length()>0){
+                                CoupleModel cm = new CoupleModel();
+                                cm.setUserEmail1(Useremail);
+                                cm.setGetUserEmail2(dasonip);
+                                cm.setRequestState(0);
+                                dasoniRef.child("CoupleData").push().setValue(cm);
+                            }else{
+                                Toast.makeText(UserConnectionActivity.this,"없는 이메일을 입니다", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                }else {
+                    Toast.makeText(UserConnectionActivity.this,"상대방 이메일을 입력해주세요", Toast.LENGTH_LONG).show();
+                }
             }
         });
-
-    }
-    public void connect(){
-        String dasonipartner = (binding.dasonifild).getText().toString().trim();//이메일
-        if(dasonipartner.length()>0&&!binding.dasonifild.equals(Useremail)){
-           usrAcctRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for(DataSnapshot snapshot1 : snapshot.getChildren()){
-                        UserAccount userAccount = snapshot1.getValue(UserAccount.class);
-                        dasonip = userAccount.getEmail();
-                    }
-                    if(dasonip.length()>0){
-                        CoupleModel cm = new CoupleModel();
-                        cm.setUserEmail1(Useremail);
-                        cm.setGetUserEmail2(dasonip);
-                        cm.setRequestState(0);
-                        dasoniRef.child("CoupleData").push().setValue(cm);
-                    }else{
-                        Toast.makeText(UserConnectionActivity.this,"없는 이메일을 입니다", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-        }else{
-            Toast.makeText(UserConnectionActivity.this,"상대방 이메일을 입력해 주세요", Toast.LENGTH_LONG).show();
-        }
 
     }
     public void openMainActivity(){
