@@ -122,7 +122,6 @@ public class UserConnectionActivity extends AppCompatActivity {
                             update.put("requestState",coupleModel.getRequestState());
                             update.put("getUserEmail2",coupleModel.getGetUserEmail2());
                             update.put("userEmail1",coupleModel.getUserEmail1());
-                            coupleModel.setRequestState(1);
                             dasoniRef.child("CoupleData").updateChildren(update);
                             binding.cardv.setVisibility(View.INVISIBLE);
                         }
@@ -146,7 +145,6 @@ public class UserConnectionActivity extends AppCompatActivity {
                             update.put("requestState",coupleModel.getRequestState());
                             update.put("getUserEmail2",coupleModel.getGetUserEmail2());
                             update.put("userEmail1",coupleModel.getUserEmail1());
-                            coupleModel.setRequestState(1);
                             dasoniRef.child("CoupleData").updateChildren(update);
                             binding.cardv.setVisibility(View.INVISIBLE);
                         }
