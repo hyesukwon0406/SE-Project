@@ -69,14 +69,14 @@ public class UserConnectionActivity extends AppCompatActivity {
         cpfm.setArguments(bundle);
         gfm.setArguments(bundle);
         mfm.setArguments(bundle);
-        dasonist();
         dasonirequest();
+        dasonino();
+        dasonist();
+        dasoniust();
         //확인 버튼
         findDasoniButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 String dasonipartner = pfinddasoniinputtxt.getText().toString().trim();//이메일
                 Toast.makeText(UserConnectionActivity.this,pfinddasoniinputtxt.getText().toString().trim(), Toast.LENGTH_LONG).show();
                 if(dasonipartner.length()>0&&!dasonipartner.equals(Useremail)){
@@ -108,7 +108,7 @@ public class UserConnectionActivity extends AppCompatActivity {
                     }else {}
 
                 }else{
-                        Toast.makeText(UserConnectionActivity.this,"상대방 이메일을 입력해주세요", Toast.LENGTH_LONG).show();
+                        Toast.makeText(UserConnectionActivity.this,"상대방 이메일을 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -159,22 +159,25 @@ public class UserConnectionActivity extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) { }
                 });
-
             }
-
         });
-
+        dasonirequest();
+        dasonino();
+        dasonist();
+        dasoniust();
     }
 
     public void dasonirequest(){
-        Query queries=dasoniRef.child("CoupleData").orderByChild("getUserEmail2").equalTo(Useremail);
-        queries.addListenerForSingleValueEvent(new ValueEventListener() {
+        Toast.makeText(UserConnectionActivity.this,"상대방 이메일을 입력해주세요1", Toast.LENGTH_SHORT).show();
+        Query queries2=dasoniRef.child("CoupleData").orderByChild("getUserEmail2").equalTo(Useremail);
+        queries2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     CoupleModel coupleModel = snapshot1.getValue(CoupleModel.class);
                     int a = coupleModel.getRequestState();
                     if (a == 0) {
+                        binding.textView15.setText(coupleModel.getUserEmail1()+"님으로 부터 요청이 욌습니다.");
                         binding.cardv.setVisibility(View.VISIBLE);
                     } else{ }
                 }
@@ -183,7 +186,26 @@ public class UserConnectionActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) { }
         });
     }
+    public void dasoniust(){
+        Toast.makeText(UserConnectionActivity.this,"상대방 이메일을 입력해주세요2", Toast.LENGTH_SHORT).show();
+        Query queries3=dasoniRef.child("CoupleData").orderByChild("UserEmail1").equalTo(Useremail);
+        queries3.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    CoupleModel coupleModel = snapshot1.getValue(CoupleModel.class);
+                    int a = coupleModel.getRequestState();
+                    if (a == 0) {
+                        showText.setText("다소니의 승낙을 \n       대기중");
+                    } else{ }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+    }
     public void dasonist(){
+        Toast.makeText(UserConnectionActivity.this,"상대방 이메일을 입력해주세요3", Toast.LENGTH_SHORT).show();
         Query queries=dasoniRef.child("CoupleData").orderByChild("UserEmail1").equalTo(Useremail);
         queries.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -193,9 +215,7 @@ public class UserConnectionActivity extends AppCompatActivity {
                     int a = coupleModel.getRequestState();
                     if (a == 1) {
                        openMainActivity();
-                    } else{
-
-                    }
+                    } else{ }
                 }
             }
             @Override
@@ -203,6 +223,9 @@ public class UserConnectionActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void dasonino(){
+        Toast.makeText(UserConnectionActivity.this,"상대방 이메일을 입력해주세요4", Toast.LENGTH_SHORT).show();
         Query query=dasoniRef.child("CoupleData").orderByChild("UserEmail1").equalTo(Useremail);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

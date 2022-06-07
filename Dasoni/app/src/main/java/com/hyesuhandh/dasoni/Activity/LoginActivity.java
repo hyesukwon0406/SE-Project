@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
     //로그인 기능
     public void logIn(){

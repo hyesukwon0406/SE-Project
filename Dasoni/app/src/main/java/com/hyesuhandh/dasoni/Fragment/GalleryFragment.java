@@ -117,7 +117,7 @@ public class GalleryFragment extends Fragment {
         database =FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Dasoni");
         storage = FirebaseStorage.getInstance();
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("ImgData").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //파이어베이스 데이터베이스의 데이터를 받아오는 곳
@@ -184,7 +184,7 @@ public class GalleryFragment extends Fragment {
             imglod.setDate(formatter.format(now));
             imglod.setUser(UserUid);
             imglod.setImage( filename );
-            databaseReference.child("CoupleData").push().setValue(imglod);
+            databaseReference.child("ImgData").push().setValue(imglod);
 
             StorageReference storageRef = storage.getReferenceFromUrl("gs://dasoni-564d8.appspot.com/").child("images/" + filename);
             //올라가거라...
